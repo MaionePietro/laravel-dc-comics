@@ -16,8 +16,10 @@
 </head>
 
 <body>
-
-   ciao
+    @include('partials.header')
+    <main>
+        @yield('content')
+    </main>
 
 </body>
 
