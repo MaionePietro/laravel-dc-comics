@@ -20,4 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/comics', [PageController::class,'index'])->name('comics.index');
 
+Route::get('/comics/create', [PageController::class, 'create'])->name('comics.create');
+
 Route::get('/comics/{comic}', [PageController::class, 'show'])->name('comics.show');
+
