@@ -12,6 +12,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{$comic->title}}</h5>
                       <p class="card-text">{{$comic->price}}€</p>
+                      <a href="{{route('comics.edit',$comic)}}" class="btn btn-warning">EDIT</a>
                     </div>
                   </div>
             </div>
