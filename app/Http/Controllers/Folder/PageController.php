@@ -78,7 +78,7 @@ class PageController extends Controller
             'price' => ['required|numeric|min:1'],
             'series' => 'required|max:30',
             'sale_date' => 'required|date',
-            'description' => 'required|text'
+            'description' => 'required|string'
         ]);
     }
 }
