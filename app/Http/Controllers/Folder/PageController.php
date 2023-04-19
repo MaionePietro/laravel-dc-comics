@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Folder;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PageController extends Controller
 {
@@ -25,6 +26,7 @@ class PageController extends Controller
 
     public function store(Request $request)
     {
+        $data = $this->validation($request);
         $data = $request->all();
         $new_comic = new Comic();
         $new_comic->title = $data['title'];
@@ -45,6 +47,7 @@ class PageController extends Controller
 
     public function update(Request $request, Comic $comic)
     {
+        $data = $this->validation($request);
         $data = $request->all();
         $comic->title = $data['title'];
         $comic->description = $data['description'];
@@ -61,5 +64,21 @@ class PageController extends Controller
     {
         $comic->delete();
         return to_route('comics.index');
+    }
+
+    public function validation(Request $request)
+    {
+        return $request->validate([
+            'title' => 'required|max:255|min:3',
+            'thumb' => 'required|max:255|url',
+            'type' => [
+                'required',
+                Rule::in(['comic', 'film'])
+            ],
+            'price' => ['required|numeric|min:1'],
+            'series' => 'required|max:30',
+            'sale_date' => 'required|date',
+            'description' => 'required|text'
+        ]);
     }
 }
