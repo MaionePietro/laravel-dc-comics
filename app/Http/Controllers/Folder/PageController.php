@@ -75,7 +75,7 @@ class PageController extends Controller
                 'required',
                 Rule::in(['comic', 'film'])
             ],
-            'price' => ['required|numeric|min:1'],
+            'price' => 'required|numeric|min:1',
             'series' => 'required|max:30',
             'sale_date' => 'required|date',
             'description' => 'required|string'
